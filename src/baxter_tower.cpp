@@ -8,16 +8,18 @@
 
 #include <ros/ros.h>
 
+#include <baxter_tower/tower_robot.hpp>
+
 int main(int argc, char** argv) {
   ros::init(argc, argv, "baxter_tower");
   ros::NodeHandle nh("baxter_tower");
+  TowerRobot tower_robot(&nh);
 
-  ros::Rate r(10);
+  ros::Rate r(100);
 
-  while (ros::ok()) {
-    ros::spinOnce();
-    r.sleep();
-  }
+  tower_robot.InitRobot();
+
+  tower_robot.RunDemo();
 
   ros::shutdown();
 

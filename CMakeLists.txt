@@ -104,7 +104,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
+ INCLUDE_DIRS include
 #  LIBRARIES baxter_tower
 #  CATKIN_DEPENDS apriltags baxter_cpp cv_bridge image_transport roscpp sensor_msgs std_msgs
 #  DEPENDS system_lib
@@ -113,11 +113,15 @@ catkin_package(
 ###########
 ## Build ##
 ###########
+set(CMAKE_CXX_COMPILER "/usr/bin/clang++-3.6")
+set(CMAKE_C_COMPILER "/usr/bin/clang-3.6")
+set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -Wall -O2")
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 # include_directories(include)
 include_directories(
+  include
   ${catkin_INCLUDE_DIRS}
 )
 
@@ -132,7 +136,9 @@ include_directories(
 # add_dependencies(baxter_tower ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Declare a C++ executable
-add_executable(baxter_tower src/baxter_tower.cpp)
+add_executable(baxter_tower
+  src/baxter_tower.cpp
+  src/tower_robot.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
