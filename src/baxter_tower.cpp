@@ -17,9 +17,10 @@ int main(int argc, char** argv) {
 
   ros::Rate r(100);
 
-  tower_robot.InitRobot();
-
-  tower_robot.RunDemo();
+  while (ros::ok()) {
+    tower_robot.InitRobot();
+    tower_robot.RunDemo();
+  }
 
   ros::shutdown();
 

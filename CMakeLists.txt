@@ -7,6 +7,7 @@ project(baxter_tower)
 find_package(catkin REQUIRED COMPONENTS
   apriltags
   baxter_cpp
+  baxter_core_msgs
   cv_bridge
   image_transport
   roscpp
@@ -106,7 +107,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
  INCLUDE_DIRS include
 #  LIBRARIES baxter_tower
-#  CATKIN_DEPENDS apriltags baxter_cpp cv_bridge image_transport roscpp sensor_msgs std_msgs
+ CATKIN_DEPENDS apriltags baxter_cpp baxter_core_msgs cv_bridge image_transport roscpp sensor_msgs std_msgs
 #  DEPENDS system_lib
 )
 
